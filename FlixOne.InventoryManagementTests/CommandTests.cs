@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace FlixOne.InventoryManagementTests
 {
     [TestClass]
-    public class UnitTest1
+    public class CommandTests
     {
         [TestMethod]
         public void AddInventoryCommand_Successful()
