@@ -12,18 +12,16 @@ namespace FlixOne.InventoryManagement
 
         // O construtor é para as classes que vão herdar desta classe
         // abstrata.
-        internal InventoryCommand(bool commandIsTerminating)
+        protected InventoryCommand(bool commandIsTerminating)
         {
             _isTerminatingCommand = commandIsTerminating;
         }
 
-        public bool RunCommmand(out bool shouldQuit)
+        public (bool wasSuccessful, bool shouldQuit) RunCommmand()
         {
-            shouldQuit = _isTerminatingCommand;
-
-            return InternalCommand();
+            return (InternalCommand(), _isTerminatingCommand);
         }
 
-        internal abstract bool InternalCommand();
+        protected abstract bool InternalCommand();
     }
 }
