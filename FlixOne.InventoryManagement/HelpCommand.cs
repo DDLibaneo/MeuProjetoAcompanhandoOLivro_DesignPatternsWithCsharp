@@ -2,10 +2,8 @@
 
 namespace FlixOne.InventoryManagement
 {
-    public class HelpCommand : InventoryCommand
+    internal class HelpCommand : NonTerminatingCommand
     {
-        public HelpCommand() : base(false) { }
-
         protected override bool InternalCommand()
         {
             Console.WriteLine("USAGE:");
