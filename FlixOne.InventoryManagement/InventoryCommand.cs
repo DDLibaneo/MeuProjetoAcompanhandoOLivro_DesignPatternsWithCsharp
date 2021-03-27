@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FlixOne.InventoryManagement
 {
@@ -19,7 +15,22 @@ namespace FlixOne.InventoryManagement
 
         public (bool wasSuccessful, bool shouldQuit) RunCommmand()
         {
+            if (this is IParameterisedCommand parameterisedCommand)
+            {
+                var allParametersCompleted = false;
+
+                while (allParametersCompleted == false)
+                {
+                    allParametersCompleted = parameterisedCommand.GetParameters();
+                }
+            }
+
             return (InternalCommand(), _isTerminatingCommand);
+        }
+
+        public string GetParameter(string parameter)
+        {
+            throw new NotImplementedException();
         }
 
         protected abstract bool InternalCommand();

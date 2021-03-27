@@ -7,7 +7,7 @@ namespace FlixOne.InventoryManagement
         protected override bool InternalCommand()
         {
             Console.WriteLine("USAGE:");
-         
+
             Console.WriteLine("\tadd inventory (a)");
 
             // ...
@@ -18,5 +18,5 @@ namespace FlixOne.InventoryManagement
 
             return true;
         }
-    }    
+    }
 }
