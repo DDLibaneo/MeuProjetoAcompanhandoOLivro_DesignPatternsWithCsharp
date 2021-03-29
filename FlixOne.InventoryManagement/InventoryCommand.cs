@@ -6,11 +6,20 @@ namespace FlixOne.InventoryManagement
     {
         private readonly bool _isTerminatingCommand;
 
+        protected IUserInterface UserInterface { get; }
+
         // O construtor é para as classes que vão herdar desta classe
         // abstrata.
-        protected InventoryCommand(bool commandIsTerminating)
+        internal InventoryCommand(bool commandIsTerminating)
         {
             _isTerminatingCommand = commandIsTerminating;
+        }
+
+        internal InventoryCommand(bool commandIsTerminating, IUserInterface userInterface)
+        {
+            _isTerminatingCommand = commandIsTerminating;
+
+            UserInterface = userInterface;
         }
 
         public (bool wasSuccessful, bool shouldQuit) RunCommmand()
@@ -28,11 +37,11 @@ namespace FlixOne.InventoryManagement
             return (InternalCommand(), _isTerminatingCommand);
         }
 
-        public string GetParameter(string parameter)
+        internal string GetParameter(string parameterName)
         {
-            throw new NotImplementedException();
+            return UserInterface.ReadValue($"Enter {parameterName}");
         }
 
-        protected abstract bool InternalCommand();
+        internal abstract bool InternalCommand();
     }
 }
