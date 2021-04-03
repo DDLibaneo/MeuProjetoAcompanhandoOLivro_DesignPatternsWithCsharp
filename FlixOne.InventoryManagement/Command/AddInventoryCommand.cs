@@ -22,7 +22,7 @@ namespace FlixOne.InventoryManagement
             return !string.IsNullOrWhiteSpace(InventoryName);
         }
 
-        protected override bool InternalCommand()
+        internal override bool InternalCommand()
         {
             throw new NotImplementedException();
         }

@@ -4,10 +4,8 @@ namespace FlixOne.InventoryManagement
 {
     internal class QuitCommand : InventoryCommand
     {
-        public QuitCommand() : base(true) { }
-
         public QuitCommand(IUserInterface userInterface) 
-            : base(true, userInterface : userInterface) { }
+            : base(true, userInterface) { }
 
         internal override bool InternalCommand()
         {
