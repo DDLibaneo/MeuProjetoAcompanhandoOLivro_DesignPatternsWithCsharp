@@ -1,4 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using FlixOne.InventoryManagementTests.Helpers;
+using FlixOne.InventoryManagementTests.Models;
+using FlixOne.InventoryManagement;
 
 namespace FlixOne.InventoryManagementTests
 {
@@ -31,7 +36,28 @@ namespace FlixOne.InventoryManagementTests
         [TestMethod]
         public void QuitCommand_Successful()
         {
-            Assert.Inconclusive("QuitCommand_Successful has not been implemented.");
+            var mockUserInterfaceObj = new MockUserInterfaceObject()
+            {
+                ReadList = new List<Tuple<string, string>>(),
+                MessageList = new List<string>()
+                {
+                    "Thank you for using FlixOne Inventory Management System"
+                },
+                WarningList = new List<string>()
+            };
+
+            var expectedInterface = new TestUserInterface(mockUserInterfaceObj);
+
+            // create an instance of the command
+            var command = new QuitCommand(expectedInterface);
+
+            // add a new book with parameter "name"
+            var (wasSuccessful, shouldQuit) = command.RunCommand();
+
+            expectedInterface.Validate();
+
+            Assert.IsTrue(shouldQuit, "Quit is a terminating command.");
+            Assert.IsTrue(wasSuccessful, "Quit did not complete Successfully.");
         }
 
         [TestMethod]

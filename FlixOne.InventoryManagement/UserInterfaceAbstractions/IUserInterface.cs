@@ -1,19 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace FlixOne.InventoryManagement
 {
-    public interface IUserInterface
+    public interface IUserInterface : IReadUserInterface, IWriteUserInterface 
     {
-        string ReadValue(string message);
-
-        void WriteMessage(string message);
-
-        void WriteWarning(string message);
-
-        void WriteError(string message);
+    
     }
 }
