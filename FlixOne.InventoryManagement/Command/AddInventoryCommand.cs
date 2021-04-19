@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlixOne.InventoryManagement
+namespace FlixOne.InventoryManagement.Command
 {
-    internal class AddInventoryCommand : NonTerminatingCommand, IParameterisedCommand
+    public class AddInventoryCommand : NonTerminatingCommand, IParameterisedCommand
     {
         public string InventoryName { get; set; }
+
+        public AddInventoryCommand(IUserInterface userInterface) 
+            : base(userInterface) { }
 
         /// <summary>
         /// AddInventoryCommand requires name
@@ -22,7 +25,7 @@ namespace FlixOne.InventoryManagement
             return !string.IsNullOrWhiteSpace(InventoryName);
         }
 
-        internal override bool InternalCommand()
+        protected override bool InternalCommand()
         {
             throw new NotImplementedException();
         }

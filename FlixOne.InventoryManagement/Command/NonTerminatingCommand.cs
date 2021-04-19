@@ -1,7 +1,8 @@
-﻿namespace FlixOne.InventoryManagement
+﻿namespace FlixOne.InventoryManagement.Command
 {
-    internal abstract class NonTerminatingCommand : InventoryCommand
+    public abstract class NonTerminatingCommand : InventoryCommand
     {
-        protected NonTerminatingCommand() : base(commandIsTerminating: false) { }
+        protected NonTerminatingCommand(IUserInterface userInterface) 
+            : base(false, userInterface) { }
     }
 }

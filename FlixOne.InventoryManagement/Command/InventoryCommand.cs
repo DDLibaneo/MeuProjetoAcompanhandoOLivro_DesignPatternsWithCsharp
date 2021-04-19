@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FlixOne.InventoryManagement
+namespace FlixOne.InventoryManagement.Command
 {
     public abstract class InventoryCommand
     {
@@ -32,11 +32,11 @@ namespace FlixOne.InventoryManagement
             return (InternalCommand(), _isTerminatingCommand);
         }
 
+        protected abstract bool InternalCommand();
+
         internal string GetParameter(string parameterName)
         {
             return UserInterface.ReadValue($"Enter {parameterName}");
-        }
-
-        internal abstract bool InternalCommand();
+        }        
     }
 }
